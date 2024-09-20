@@ -1,0 +1,12 @@
+# My Go Application
+
+## Prerequisites
+- Docker installed on your machine.
+- Make installed for running commands easily.
+
+## Build and Run the Application
+
+### 1. Build the Go app locally
+
+docker build . -t calculate-service
+docker run -i -t -p 8080:8080 calculate-service

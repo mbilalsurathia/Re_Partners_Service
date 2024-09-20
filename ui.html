@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pack Calculator</title>
+</head>
+<body>
+<h1>Order Packs Calculator</h1>
+
+<div>
+    <label for="packSizes">Pack Sizes:</label><br>
+    <input type="number" id="pack1" placeholder="Pack Size 1">
+    <input type="number" id="pack2" placeholder="Pack Size 2">
+    <input type="number" id="pack3" placeholder="Pack Size 3">
+    <input type="number" id="pack4" placeholder="Pack Size 4">
+    <input type="number" id="pack5" placeholder="Pack Size 5"><br><br>
+    <button onclick="submitPackSizes()">Submit pack sizes change</button>
+</div>
+
+<div>
+    <label for="items">Items:</label><br>
+    <input type="number" id="items" placeholder="Enter number of items"><br><br>
+    <button onclick="calculatePacks()">Calculate</button>
+</div>
+
+<h2>Results</h2>
+<div id="results"></div>
+
+<script>
+    let packSizes = [];
+
+    function submitPackSizes() {
+        packSizes = [
+            parseInt(document.getElementById('pack1').value),
+            parseInt(document.getElementById('pack2').value),
+            parseInt(document.getElementById('pack3').value),
+            parseInt(document.getElementById('pack4').value),
+            parseInt(document.getElementById('pack5').value),
+        ];
+        alert('Pack sizes updated');
+    }
+
+    function calculatePacks() {
+        const items = parseInt(document.getElementById('items').value);
+
+        fetch('http://localhost:8080/calculate', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                items: items,
+                pack_sizes: packSizes
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                const resultDiv = document.getElementById('results');
+                resultDiv.innerHTML = JSON.stringify(data.packs);
+            });
+    }
+</script>
+</body>
+</html>
