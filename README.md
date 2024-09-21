@@ -76,3 +76,18 @@ Order for X items:
 - 1x500
 - 2x5000, 1x2000, 1x250
 ```
+
+Live Backend URL 
+https://re-partners-service.onrender.com/calculate
+Request Body Post
+```
+{
+    "items":251,
+    "pack_sizes":[250,500,1000]
+}
+```
+
+UI URL 
+```
+https://re-partners-service.vercel.app/
+```
