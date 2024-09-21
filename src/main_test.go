@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"pack-calculator/src/service"
 	"testing"
 )
 
@@ -11,7 +12,7 @@ func TestCalculatePacks(t *testing.T) {
 	// Test orders
 	orders := []int{1, 250, 251, 501, 12001}
 	for _, order := range orders {
-		result := calculatePacks(order, packSizes)
+		result := service.CalculatePacks(order, packSizes)
 		if result != nil {
 			fmt.Printf("Order for %d items: ", order)
 			for size, count := range result {
