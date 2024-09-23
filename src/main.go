@@ -12,7 +12,9 @@ func main() {
 	// Configure CORS middleware
 	router.Use(cors.New(cors.Config{
 		AllowAllOrigins:     true,
+		AllowMethods:        []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowPrivateNetwork: false,
+		AllowHeaders:        []string{"Origin", "Content-Type", "Authorization"},
 		AllowCredentials:    false,
 		ExposeHeaders:       []string{"Content-Length"},
 		MaxAge:              12 * 3600, // Cache the preflight request for 12 hours
