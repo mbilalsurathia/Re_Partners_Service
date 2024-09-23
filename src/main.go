@@ -13,7 +13,7 @@ func main() {
 	router.Use(cors.New(cors.Config{
 		AllowAllOrigins:     true,
 		AllowPrivateNetwork: false,
-		AllowCredentials:    true,
+		AllowCredentials:    false,
 		ExposeHeaders:       []string{"Content-Length"},
 		MaxAge:              12 * 3600, // Cache the preflight request for 12 hours
 	}))
